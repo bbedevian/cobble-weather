@@ -1,0 +1,8 @@
+.side-card {
+    border: 1px solid green;
+
+    &:hover {
+        background-color: aqua;
+        border: 1px solid black;
+      }
+}

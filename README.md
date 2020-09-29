@@ -28,3 +28,5 @@ Components
 
 Look up docker and Storybook AND Modal
 
+Dont forget Favicon at end!!!
+
