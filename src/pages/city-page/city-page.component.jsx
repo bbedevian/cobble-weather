@@ -1,12 +1,20 @@
 import React from 'react';
 import './city-page.styles.scss'
+import {connect} from 'react-redux'
 
-const CityPage = ({name}) => {
+import {selectCity} from '../../redux/cities/cities.selector'
+
+
+const CityPage = ({city}) => {
     return (
-        <div>
-            <h1>{name}</h1>
+        <div className='city-page'>
+            <h1>{city.name}</h1>
         </div>
     );
 }
 
-export default CityPage;
+const msp = (state, ownProps) => ({
+    city: selectCity(ownProps.match.params.city)(state)
+})
+
+export default connect(msp)(CityPage);

@@ -8,12 +8,13 @@ import CityPage from '../city-page/city-page.component';
 import {withRouter} from 'react-router-dom';
 
 
-const HomePage = ({match}) => {
+const HomePage = () => {    
+
     return (
         <div className='homepage'>
             <SideBar/>
-            <Route exact path={`${match.path}`} component={Overview}/>
-            <Route path={`${match.path}/:cityId`} component={CityPage}/>
+            <Route exact path='/' component={Overview}/>
+            <Route path={`/:city`} component={CityPage}/>
         </div>
     );
 }
