@@ -4,7 +4,6 @@ import './forecast-card.styles.scss'
 const ForecastCard = (props) => {
     const {weather} = props
     let d = new Date(weather.dt * 1000);
-    console.log(d)
     let date =  d.getMonth() + '/' + (d.getDate() )+ '/' + d.getYear()
     return (
         <div className='forecast-card'>

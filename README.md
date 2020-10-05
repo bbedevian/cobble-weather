@@ -1,32 +1,20 @@
-Components 
- App 
- - Router
- - Provider
- 
- Redux
- - Needs to hold the current weather for locations 
- - Needs to hold selected city or would this be in the url? Redirect when wrong city is input? 
-
- Home page
- - when no city selected, maybe users current location ? 
- - maybe some annimation
- - Search bar for other locations? 
-
- Side container
-  - location cards
-    - utilizes the location weather from redux, maybe current temp and icon
-    - Highlighted when selected
 
 
 
-    Weather Page
-    - reused for all based on URL or Redux? 
+Still to do: 
+√ 1) convert to Redux Saga
+2) style
+3) figure out the search city feature
+4) something with the Overview page? 
+5) include a refresh button
+√ 6) change scroll to only the CityPage component
+7) Modal for expanded weather
 
-    DayCard
-    - Gets passed props from weather page
-    - Modal for more info
+Sidenotes:
+- Include day of the week, and also remove the 8th day from forecast? 
+- highlight selected sidebar city
 
-Look up docker and Storybook AND Modal
+Look up docker and Storybook
 
 Dont forget Favicon at end!!!
 

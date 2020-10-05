@@ -2,24 +2,24 @@ import React from 'react';
 import './city-page.styles.scss'
 import {connect} from 'react-redux'
 
-import {fetchWeather} from '../../redux/weather/weather.actions'
+// import {fetchWeatherStartAsync} from '../../redux/weather/weather.actions'
+import {fetchWeatherStart} from '../../redux/weather/weather.actions'
 import {selectCity} from '../../redux/cities/cities.selector'
 import ForecastCard from '../../components/forecast-card/forecast-card.component';
-
+import JustSpinner from '../../components/with-spinner/just-spinner.component';
 
 
 class CityPage extends React.Component {
     
     componentDidMount(){
-        const {fetchWeather, city} = this.props
-        fetchWeather(city.lat, city.lon)
-
+        const {fetchWeatherStart, city} = this.props
+        fetchWeatherStart(city.lat, city.lon)
     }
     
     componentDidUpdate(prevProps) {
-        const {fetchWeather, city} = this.props
+        const {fetchWeatherStart, city} = this.props
         if (prevProps.city.id !== city.id) {
-            fetchWeather(city.lat, city.lon)
+            fetchWeatherStart(city.lat, city.lon)
         }
       }
 
@@ -30,12 +30,12 @@ class CityPage extends React.Component {
                 <div className='city-page'>
                     <div className='city-name'>{city.name}</div>
                     {
-                        weather.daily ? 
+                        weather ? 
                         weather.daily.map((day, index) => (
                         <ForecastCard key={index} weather={day} />
                     ))
                     :
-                    null
+                    <JustSpinner/>
                     }
                 </div>
             );
@@ -44,12 +44,12 @@ class CityPage extends React.Component {
 
 const msp = (state, ownProps) => ({
     city: selectCity(ownProps.match.params.city)(state),
-    weather: state.weather.weather
+    weather: state.weather.weather,
 })
 
 const mdp = (dispatch) => {
     return {
-      fetchWeather: (lat, lon) => dispatch(fetchWeather(lat, lon))
+      fetchWeatherStart: (lat, lon) => dispatch(fetchWeatherStart(lat, lon))
     }
   }
 
