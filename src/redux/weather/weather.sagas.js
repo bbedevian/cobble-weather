@@ -6,23 +6,24 @@ import axios from 'axios';
 const YEK_IPA = '51ff429ab612a79e8b0d67dd1f48e834';
 
 export function* fetchWeatherAsync(action) {
-    yield console.log('i am being fired!')
     try {
-        const response = yield call(apiCall, action.lat, action.lon)
+        const response = yield call(apiCall, action.city)
         yield put(fetchWeatherSuccess(response.data))
     } catch(err){
         yield put(fetchWeatherFailure(err.message))
     }
 }
 
-export function* fetchWeatherStart(lat, lon) {
+export function* fetchWeatherStart() {
     yield takeEvery(WeatherActionTypes.FETCH_WEATHER_START, fetchWeatherAsync)
 }
 
-function apiCall(lat, lon){
-    const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=hourly,minutely&appid=${YEK_IPA}`
-    return axios({
-        method: "get",
-        url: URL
-      })
+const apiCall = async (city) => {
+    let query = encodeURI(city.toLowerCase())
+    const URL1 = `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${YEK_IPA}`
+    let resp = await axios.get(URL1)
+    let lat = resp.data.coord.lat
+    let lon = resp.data.coord.lon
+    const URL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=hourly,minutely&appid=${YEK_IPA}`
+    return axios.get(URL2)
 }

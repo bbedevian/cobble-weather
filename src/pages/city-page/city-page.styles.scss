@@ -1,7 +1,23 @@
 .city-page{
-    width: 250px;
+    width: 70%;
     text-align: center;
     margin: auto auto;
     overflow: auto;
-    height: 500px;
+    height: 600px;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.city-name {
+    font-size: 50px;
+}
+
+.refresh {
+    font-size: 50px;
 }

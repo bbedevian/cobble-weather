@@ -13,25 +13,28 @@ class CityPage extends React.Component {
     
     componentDidMount(){
         const {fetchWeatherStart, city} = this.props
-        fetchWeatherStart(city.lat, city.lon)
+        fetchWeatherStart(city.name)
     }
     
     componentDidUpdate(prevProps) {
         const {fetchWeatherStart, city} = this.props
-        if (prevProps.city.id !== city.id) {
-            fetchWeatherStart(city.lat, city.lon)
+        if (prevProps.city.name !== city.name) {
+            fetchWeatherStart(city.name)
         }
       }
 
     render(){
-        const {city, weather} = this.props 
+        const {city, weather, fetchWeatherStart} = this.props 
         
             return (
                 <div className='city-page'>
-                    <div className='city-name'>{city.name}</div>
+                    <div className='headline'>
+                        <div className='city-name'>{city.name}</div>
+                        <span className='refresh' onClick={() => fetchWeatherStart(city.name)}>↻</span>
+                    </div>
                     {
                         weather ? 
-                        weather.daily.map((day, index) => (
+                        weather.daily.filter((day, index) => index < 7).map((day, index) => (
                         <ForecastCard key={index} weather={day} />
                     ))
                     :
@@ -49,7 +52,7 @@ const msp = (state, ownProps) => ({
 
 const mdp = (dispatch) => {
     return {
-      fetchWeatherStart: (lat, lon) => dispatch(fetchWeatherStart(lat, lon))
+      fetchWeatherStart: (city) => dispatch(fetchWeatherStart(city))
     }
   }
 

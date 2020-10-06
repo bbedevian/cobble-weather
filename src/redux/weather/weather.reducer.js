@@ -11,6 +11,7 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
         case WeatherActionTypes.FETCH_WEATHER_START:
             return {
                 ...state,
+                weather: null,
                 isFetching: true
             }; 
         case WeatherActionTypes.FETCH_WEATHER_SUCCESS: 

@@ -4,9 +4,9 @@ import {withRouter} from 'react-router-dom';
 
 const SidebarCard = (props) => {
     const {city, history} = props
-
+    const url = city.name.toLowerCase().split(' ').join('')
     return (
-        <div className='side-card' onClick={() => history.push(`${city.linkURL}`)}>
+        <div className='side-card' onClick={() => history.push(`${url}`)}>
             <h1>{city.name}</h1>
         </div>
     );

@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 const Header = ({history}) => {
     return (
         <div className='header' onClick={() => history.push('/')}>
-            <h1>Cobble Weather</h1>
+            <span className='cobble-weather'>Cobble Weather</span>
         </div>
     );
 }

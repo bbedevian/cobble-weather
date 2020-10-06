@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans');
+
+body {
+    font-family: 'Balsamiq Sans', cursive;
+    margin: auto;
+    width: 95%;
+    margin-top: 20px;
+}
+
+.App {
+    /* background-image: linear-gradient(to bottom, rgb(64,202,198), white); */
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow:  5px 5px 5px 5px rgb(250,164,94, 0.5);
+}
+
+.day {
+    background-image: linear-gradient(to bottom, rgb(64,202,198), white);
+}
+
+.night {
+    background-image: linear-gradient(to bottom, rgb(4, 58, 119), rgb(57, 145, 195));
+    color: white;
+}
